@@ -21,11 +21,11 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route
           path="/profile"
-          element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
+          element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
         />
         <Route path="/Resources" element={<MainTask/>}/>
       </Routes>

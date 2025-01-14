@@ -22,7 +22,7 @@ const MainTask = () => {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
-          navigate('/login');
+          navigate('/');
           return;
         }
 
@@ -41,7 +41,7 @@ const MainTask = () => {
         if (error.response?.status === 401) {
           localStorage.removeItem('token');
           delete axios.defaults.headers.common['Authorization'];
-          navigate('/login');
+          navigate('/');
         }
       } finally {
         setLoading(false);
@@ -101,7 +101,7 @@ const MainTask = () => {
   const handleLogout = () => {
     localStorage.removeItem('token');
     delete axios.defaults.headers.common['Authorization'];
-    navigate('/login');
+    navigate('/');
   };
 
   if (loading) {

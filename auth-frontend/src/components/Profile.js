@@ -14,7 +14,7 @@ const Profile = () => {
         const token = localStorage.getItem("token");
 
         if (!token) {
-          navigate("/login");
+          navigate("/");
           return;
         }
         const decoded = jwtDecode(token);
@@ -30,7 +30,7 @@ const Profile = () => {
         console.error("Error fetching user data:", error);
         if (error.response?.status === 401) {
           localStorage.removeItem("token");
-          navigate("/login");
+          navigate("/");
         }
         setLoading(false);
       }
@@ -41,7 +41,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   if (loading) {

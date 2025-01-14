@@ -39,7 +39,7 @@ const Register = () => {
         formData
       );
       alert(response.data.message);
-      window.location.href = '/login'; 
+      window.location.href = '/'; 
     } catch (error) {
       const errorMessage = error.response
         ? error.response.data.message
@@ -104,7 +104,7 @@ const Register = () => {
           )}
         </form>
         <div className="text-center mt-4">
-          <p>Already have an account? <Link to="/Login" className="text-primary">Login</Link></p>
+          <p>Already have an account? <Link to="/" className="text-primary">Login</Link></p>
         </div>
       </div>
     </div>
