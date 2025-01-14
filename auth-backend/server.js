@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const path = require('path');
+
 const jwt = require('jsonwebtoken');
 
 const authRoutes = require('./routes/authRoutes');  
@@ -34,13 +34,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api', profileRoutes);
 app.use("/api/tasks", taskRoutes);
 
-
-app.use(express.static(path.join(__dirname, '/auth-frontend/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'auth-frontend', 'dist', '/public/index.html'));
-})
-
 app.get("/api/currentUserRole", (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) {
@@ -60,7 +53,5 @@ app.get("/api/currentUserRole", (req, res) => {
 
 
 
-app.listen(5000, () => {
-  console.log('Server is running on port 5000!');
-});
-
+const PORT = 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
